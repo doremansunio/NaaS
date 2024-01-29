@@ -110,3 +110,24 @@ resource "rafay_namespace" "tfdemonamespace1" {
     }
   }
 }
+
+resource "rafay_namespace" "tfdemonamespace2" {  
+  metadata {    
+    name    = "ns3"
+    project = var.project_name
+    labels = {      
+      "cluster-name" ="${var.cluster_name}"
+    }
+  }
+  spec {
+    drift {
+      enabled = false
+    }
+    placement {
+      labels {
+        key   = "rafay.dev/clusterName"
+        value = var.cluster_name
+      }
+    }
+  }
+}
