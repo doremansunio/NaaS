@@ -26,10 +26,6 @@ resource "rafay_namespace" "tfdemonamespace" {
         key   = "rafay.dev/clusterName"
         value = var.cluster_name
       }
-      labels {
-        key   = "rafay.dev/projectName"
-        value = var.project_name
-      }
     }
   }
 }
