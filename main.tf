@@ -14,7 +14,7 @@ provider "rafay" {
 #Basic example for namespace
 resource "rafay_namespace" "tfdemonamespace" {
   metadata {
-    name    = var.namespace_name
+    name    = var.to_namespace_name
     project = var.project_name
     labels = {
       "project-name" = "${var.project_name}"
@@ -87,5 +87,27 @@ resource "rafay_namespace" "tfdemonamespace" {
     }
   }
 
+  }
+}
+
+resource "rafay_namespace" "tfdemonamespace" {
+  metadata {
+    name    = var.from_namespace_name
+    project = var.project_name
+    labels = {
+      "project-name" = "${var.project_name}"
+      "cluster-name" = "${var.cluster_name}"
+    }
+  }
+  spec {
+    drift {
+      enabled = false
+    }
+    placement {    
+      labels {
+        key   = "rafay.dev/clusterName"
+        value = var.cluster_name
+      }       
+    }
   }
 }

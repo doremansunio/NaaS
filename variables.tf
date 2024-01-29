@@ -18,7 +18,12 @@ variable "main_cluster_project_name" {
   default = "team-a"
 }
 
-variable "namespace_name" {
+variable "to_namespace_name" {
   type = string
   default = "ns1"
+}
+
+variable "from_namespace_name" {
+  type = string
+  default = "ns2"
 }
