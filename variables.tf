@@ -20,5 +20,5 @@ variable "main_cluster_project_name" {
 
 variable "namespace_name" {
   type = string
-  default = "ns1"
+  default = "ns2"
 }
