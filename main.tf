@@ -115,8 +115,7 @@ resource "rafay_namespace" "tfdemonamespace23" {
   metadata {    
     name    = "ns5"
     project = var.project_name
-    labels = {
-      "project-name" = "${var.project_name}"
+    labels = {      
       "cluster-name" ="${var.cluster_name}"
     }
   }
