@@ -23,9 +23,13 @@ resource "rafay_namespace" "tfdemonamespace" {
     }
     placement {
       labels {
-        "rafay.dev/clusterName" = var.cluster_name
-        "rafay.dev/projectName" = var.project_name
-      }        
+        key   = "rafay.dev/projectName"
+        value = var.project_name
+      }       
+      labels {
+        key   = "rafay.dev/clusterName"
+        value = var.cluster_name
+      }       
     }
   }
 }
