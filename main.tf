@@ -90,7 +90,7 @@ resource "rafay_namespace" "tfdemonamespace" {
   }
 }
 
-resource "rafay_namespace" "from_namespace" {
+resource "rafay_namespace" "tfdemonamespace1" {
   metadata {
     name    = var.from_namespace_name
     project = var.project_name
