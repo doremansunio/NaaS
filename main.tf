@@ -91,23 +91,24 @@ resource "rafay_namespace" "tfdemonamespace" {
 }
 
 resource "rafay_namespace" "tfdemonamespace1" {
-  metadata {
+  depends_on = [ rafay_namespace.tfdemonamespace ]
+  metadata {    
     name    = var.from_namespace_name
     project = var.project_name
     labels = {
       "project-name" = "${var.project_name}"
-      "cluster-name" = "${var.cluster_name}"
+      "cluster-name" ="${var.cluster_name}"
     }
   }
   spec {
     drift {
       enabled = false
     }
-    placement {    
+    placement {
       labels {
         key   = "rafay.dev/clusterName"
         value = var.cluster_name
-      }       
+      }
     }
   }
 }
