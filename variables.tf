@@ -1,6 +1,6 @@
 variable "project_name" {
   type = string
-  default = "team-e"
+  default = "team-q"
 }
 
 variable "workspace_admins" {
@@ -10,7 +10,7 @@ variable "workspace_admins" {
 
 variable "cluster_name" {
   type = string
-  default = "multi-eks1"
+  default = "multi-eks2"
 }
 
 variable "main_cluster_project_name" {
