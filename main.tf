@@ -12,9 +12,9 @@ provider "rafay" {
 }
 
 #Basic example for namespace
-resource "rafay_namespace" "tfdemonamespace" {
+resource "rafay_namespace" "tfdemonamespace01" {
   metadata {
-    name    = var.to_namespace_name
+    name    = var.namespace_name1
     project = var.project_name
     labels = {
       "project-name" = "${var.project_name}"
@@ -89,9 +89,9 @@ resource "rafay_namespace" "tfdemonamespace" {
   }
 }
 
-resource "rafay_namespace" "tfdemonamespace1" {  
+resource "rafay_namespace" "tfdemonamespace02" {  
   metadata {    
-    name    = var.from_namespace_name
+    name    = var.namespace_name2
     project = var.project_name
     labels = {
       "project-name" = "${var.project_name}"
@@ -111,9 +111,9 @@ resource "rafay_namespace" "tfdemonamespace1" {
   }
 }
 
-resource "rafay_namespace" "tfdemonamespace23" {  
+resource "rafay_namespace" "tfdemonamespace03" {  
   metadata {    
-    name    = "ns5"
+    name    = var.namespace_name3
     project = var.project_name
     labels = {      
       "cluster-name" ="${var.cluster_name}"

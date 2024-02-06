@@ -3,11 +3,6 @@ variable "project_name" {
   default = "team-q"
 }
 
-variable "workspace_admins" {
-  type    = list
-  default = ["phani.kg@gmail.com"]
-}
-
 variable "cluster_name" {
   type = string
   default = "multi-eks2"
@@ -18,12 +13,17 @@ variable "main_cluster_project_name" {
   default = "team-a"
 }
 
-variable "to_namespace_name" {
+variable "namespace_name1" {
   type = string
   default = "ns1"
 }
 
-variable "from_namespace_name" {
+variable "namespace_name2" {
   type = string
   default = "ns2"
+}
+
+variable "namespace_name3" {
+  type = string
+  default = "ns3"
 }
