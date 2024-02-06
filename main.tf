@@ -89,8 +89,7 @@ resource "rafay_namespace" "tfdemonamespace01" {
   }
 }
 
-resource "rafay_namespace" "tfdemonamespace02" {  
-  depends_on = [ rafay_namespace.tfdemonamespace01 ]
+resource "rafay_namespace" "tfdemonamespace02" {    
   metadata {    
     name    = var.namespace_name2
     project = var.project_name
@@ -112,8 +111,7 @@ resource "rafay_namespace" "tfdemonamespace02" {
   }
 }
 
-resource "rafay_namespace" "tfdemonamespace03" {  
-  depends_on = [ rafay_namespace.tfdemonamespace02 ]
+resource "rafay_namespace" "tfdemonamespace03" {    
   metadata {    
     name    = var.namespace_name3
     project = var.project_name
