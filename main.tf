@@ -12,26 +12,26 @@ provider "rafay" {
 }
 
 #Basic example for namespace
-resource "rafay_namespace" "tfdemonamespace01" {
-  metadata {
-    name    = var.namespace_name1
-    project = var.project_name
-    labels = {
-      "project-name" = "${var.project_name}"
-      "cluster-name" = "${var.cluster_name}"
-    }
-  }
-  spec {
-    drift {
-      enabled = false
-    }
-    placement {    
-      labels {
-        key   = "rafay.dev/clusterName"
-        value = var.cluster_name
-      }       
-    }
-
+# resource "rafay_namespace" "tfdemonamespace01" {
+#   metadata {
+#     name    = var.namespace_name
+#     project = var.project_name
+#     labels = {
+#       "project-name" = "${var.project_name}"
+#       "cluster-name" = "${var.cluster_name}"
+#     }
+#   }
+#   spec {
+#     drift {
+#       enabled = false
+#     }
+#     placement {    
+#       labels {
+#         key   = "rafay.dev/clusterName"
+#         value = var.cluster_name
+#       }       
+#     }
+    
     # resource_quotas {
     #   config_maps = "10"
     #   cpu_limits = "4000m"
@@ -86,48 +86,49 @@ resource "rafay_namespace" "tfdemonamespace01" {
     #     }
     #   }
     # }
-  }
-}
+#   }
+# }
 
-resource "rafay_namespace" "tfdemonamespace02" {    
-  metadata {    
-    name    = var.namespace_name2
+resource "rafay_namespace" "tfdemonamespace01" {
+  metadata {
+    name    = var.namespace_name
     project = var.project_name
     labels = {
       "project-name" = "${var.project_name}"
-      "cluster-name" ="${var.cluster_name}"
+      "cluster-name" = "${var.cluster_name}"
     }
   }
   spec {
     drift {
       enabled = false
     }
-    placement {
+    placement {    
       labels {
-        key   = "rafay.dev/clusterName"
+        key   = "cluster_name"
         value = var.cluster_name
+      }
+      labels {
+        key   = "project_name"
+        value = var.project_name
+      }     
+    }
+
+  network_policy_params {
+    network_policy_enabled = true
+    policies {
+        name    = var.ns-within-ws-policy
+        version = var.ns-within-ws-policy-version
       }
     }
   }
 }
 
-resource "rafay_namespace" "tfdemonamespace03" {    
-  metadata {    
-    name    = var.namespace_name3
-    project = var.project_name
-    labels = {      
-      "cluster-name" ="${var.cluster_name}"
-    }
-  }
-  spec {
-    drift {
-      enabled = false
-    }
-    placement {
-      labels {
-        key   = "rafay.dev/clusterName"
-        value = var.cluster_name
-      }
-    }
-  }
+
+resource "rafay_groupassociation" "nsgroupassociation" {
+  depends_on = [rafay_namespace.tfdemonamespace01]
+  project = "${var.project_name}"
+  group = "WrkspAdmin-grp-${var.project_name}"
+  namespaces = ["${var.namespace_name}"]
+  roles = ["NAMESPACE_ADMIN"]
+  add_users = ["${var.namespace_admin}"]  
 }

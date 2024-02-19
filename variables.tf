@@ -1,29 +1,26 @@
 variable "project_name" {
-  type = string
-  default = "team-q"
+  type = string  
 }
 
 variable "cluster_name" {
-  type = string
-  default = "multi-eks1"
+  type = string  
 }
 
-variable "main_cluster_project_name" {
-  type = string
-  default = "team-a"
-}
-
-variable "namespace_name1" {
+variable "namespace_name" {
   type = string
   default = "ns1"
 }
 
-variable "namespace_name2" {
-  type = string
-  default = "ns2"
+variable "namespace_admin" {
+  type = string  
 }
 
-variable "namespace_name3" {
-  type = string
-  default = "ns3"
+variable "ns-within-ws-policy" {
+  type = string  
 }
+
+variable "ns-within-ws-policy-version" {
+  type = string  
+}
+
+
