@@ -119,10 +119,14 @@ resource "rafay_namespace" "tfdemonamespace01" {
   }
 }
 
+resource "rafay_group" "group" {
+  name        = "NsAdmin-grp-${var.project_name}-${var.namespace_name}"
+}
+
 resource "rafay_groupassociation" "nsgroupassociation" {
   depends_on = [rafay_namespace.tfdemonamespace01]
   project = "${var.project_name}"
-  group = "WrkspAdmin-grp-${var.project_name}"
+  group = rafay_group.group.name
   namespaces = ["${var.namespace_name}"]
   roles = ["NAMESPACE_ADMIN"]
   add_users = ["${var.namespace_admin}"]  
