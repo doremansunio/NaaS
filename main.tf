@@ -104,13 +104,9 @@ resource "rafay_namespace" "tfdemonamespace01" {
     }
     placement {    
       labels {
-        key   = "cluster_name"
+        key   = "rafay.dev/clusterName"
         value = var.cluster_name
       }
-      labels {
-        key   = "project_name"
-        value = var.project_name
-      }     
     }
 
   network_policy_params {
@@ -122,7 +118,6 @@ resource "rafay_namespace" "tfdemonamespace01" {
     }
   }
 }
-
 
 resource "rafay_groupassociation" "nsgroupassociation" {
   depends_on = [rafay_namespace.tfdemonamespace01]

@@ -7,8 +7,7 @@ variable "cluster_name" {
 }
 
 variable "namespace_name" {
-  type = string
-  default = "ns1"
+  type = string  
 }
 
 variable "namespace_admin" {
