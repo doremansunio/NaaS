@@ -120,12 +120,12 @@ resource "rafay_namespace" "tfdemonamespace01" {
 }
 
 resource "rafay_group" "group" {
-  depends_on = [rafay_namespace.tfdemonamespace01]
+  //depends_on = [rafay_namespace.tfdemonamespace01]
   name        = "NsAdmin-grp-${var.project_name}-${var.namespace_name}"
 }
 
 resource "rafay_groupassociation" "nsgroupassociation" {
-  depends_on = [rafay_group.group]
+  //depends_on = [rafay_group.group]
   project = "${var.project_name}"
   group = "NsAdmin-grp-${var.project_name}-${var.namespace_name}"
   namespaces = ["${var.namespace_name}"]
