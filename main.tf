@@ -133,14 +133,14 @@ resource "rafay_groupassociation" "nsgroupassociation" {
   add_users = ["${var.namespace_admin}"]  
 }
 
-# resource "rafay_cluster_sharing" "demo-terraform-specific" {
-#   depends_on = [rafay_groupassociation.nsgroupassociation]
-#   clustername = var.cluster_name
-#   project     = var.central_pool_name
-#   sharing {
-#     all = false
-#     projects {
-#       name = var.project_name
-#     }    
-#   }
-# }
+resource "rafay_cluster_sharing" "demo-terraform-specific" {
+  depends_on = [rafay_groupassociation.nsgroupassociation]
+  clustername = var.cluster_name
+  project     = var.central_pool_name
+  sharing {
+    all = false
+    projects {
+      name = var.project_name
+    }    
+  }
+}
