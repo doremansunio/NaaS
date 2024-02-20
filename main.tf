@@ -127,7 +127,7 @@ resource "rafay_group" "group" {
 resource "rafay_groupassociation" "nsgroupassociation" {
   depends_on = [rafay_group.group]
   project = "${var.project_name}"
-  group = rafay_group.group.name
+  group = "NsAdmin-grp-${var.project_name}-${var.namespace_name}"
   namespaces = ["${var.namespace_name}"]
   roles = ["NAMESPACE_ADMIN"]
   add_users = ["${var.namespace_admin}"]  
