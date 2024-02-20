@@ -22,8 +22,3 @@ variable "ns-within-ws-policy-version" {
   type = string  
 }
 
-variable "central_pool_name" {
-  type = string  
-}
-
-
