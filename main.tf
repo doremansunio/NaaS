@@ -120,14 +120,27 @@ resource "rafay_namespace" "tfdemonamespace01" {
 }
 
 resource "rafay_group" "group" {
+  depends_on = [rafay_namespace.tfdemonamespace01]
   name        = "NsAdmin-grp-${var.project_name}-${var.namespace_name}"
 }
 
 resource "rafay_groupassociation" "nsgroupassociation" {
-  depends_on = [rafay_namespace.tfdemonamespace01]
+  depends_on = [rafay_group.group]
   project = "${var.project_name}"
   group = rafay_group.group.name
   namespaces = ["${var.namespace_name}"]
   roles = ["NAMESPACE_ADMIN"]
   add_users = ["${var.namespace_admin}"]  
+}
+
+resource "rafay_cluster_sharing" "demo-terraform-specific" {
+  depends_on = [rafay_groupassociation.nsgroupassociation]
+  clustername = var.cluster_name
+  project     = var.central_pool_name
+  sharing {
+    all = false
+    projects {
+      name = var.project_name
+    }    
+  }
 }
