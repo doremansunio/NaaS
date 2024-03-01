@@ -130,5 +130,6 @@ resource "rafay_groupassociation" "nsgroupassociation" {
   group = rafay_group.group.name
   namespaces = ["${var.namespace_name}"]
   roles = ["NAMESPACE_ADMIN"]
-  add_users = ["${var.namespace_admin}"]  
+  #add_users = ["${var.namespace_admins}"]  
+  add_users = var.namespace_admins
 }

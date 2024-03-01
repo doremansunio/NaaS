@@ -10,8 +10,8 @@ variable "namespace_name" {
   type = string  
 }
 
-variable "namespace_admin" {
-  type = string  
+variable "namespace_admins" {
+  type = list  
 }
 
 variable "ns-within-ws-policy" {
