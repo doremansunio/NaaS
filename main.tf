@@ -31,6 +31,21 @@ resource "rafay_namespace" "tfdemonamespace01" {
       }
     }
 
+    resource_quotas {
+      cpu_requests = "1000m"
+      memory_requests = "1024Mi"
+      cpu_limits = "2000m"
+      memory_limits = "2048Mi"
+      config_maps = "5"
+      persistent_volume_claims = "2"
+      services = "10"
+      pods = "20"
+      replication_controllers = "4"
+      services_load_balancers = "4"
+      services_node_ports = "4"
+      storage_requests = "10Gi"      
+    }
+
     limit_range {
       pod {
         max {
