@@ -53,8 +53,8 @@ resource "rafay_namespace" "tfdemonamespace01" {
           memory = "128Mi"
         }
         min {
-          cpu  = "250m"
-          memory = "64Mi"
+          cpu  = "50m"
+          memory = "32Mi"
         }
         ratio {
           cpu    = 1
@@ -63,11 +63,11 @@ resource "rafay_namespace" "tfdemonamespace01" {
       }
       container {
         default {
-          cpu  = "250m"
+          cpu  = "100m"
           memory = "64Mi"
         }
         default_request {
-          cpu  = "250m"
+          cpu  = "100m"
           memory = "64Mi"
         }
 
@@ -76,8 +76,8 @@ resource "rafay_namespace" "tfdemonamespace01" {
           memory = "128Mi"
         }
         min {
-          cpu  = "250m"
-          memory = "64Mi"
+          cpu  = "50m"
+          memory = "32Mi"
         }
         ratio {
           cpu    = 1
